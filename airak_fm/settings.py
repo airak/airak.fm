@@ -22,12 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = config('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG')
+DEBUG = config('DJANGO_DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 
 
 # Application definition
@@ -79,8 +79,8 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": config('DB_NAME'),
-        "USER": config('DB_NAME'),
-        "PASSWORD": config('DB_NAME'),
+        "USER": config('DB_USER'),
+        "PASSWORD": config('DB_PASSWORD'),
         "HOST": "db",  # set in docker-compose.yml
         "PORT": 5432,  # default postgres port
     }
@@ -128,5 +128,12 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+#Lastfm
 API_KEY_LASTFM=config('API_KEY_LASTFM')
+URL_API_LASTFM='http://ws.audioscrobbler.com/2.0/?'
+
+#Twitter
 API_KEY_TWITTER=config('API_KEY_TWITTER')
+API_SECRET_TWITTER=config('API_SECRET_TWITTER')
+CLIENT_ID_TWITTER=config('CLIENT_ID_TWITTER')
+CLIENT_SECRET_TWITTER=config('CLIENT_SECRET_TWITTER')

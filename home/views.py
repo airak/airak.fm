@@ -9,14 +9,13 @@ def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
 
 def get_lastfm(request):
-    url = 'http://ws.audioscrobbler.com/2.0/?'
     params = {
         'method': 'user.getweeklyartistchart',
         'user': 'matairak',
         'api_key': settings.API_KEY_LASTFM,
         'format': 'json'
     }
-    response = requests.get(url, params)
+    response = requests.get(settings.URL_API_LASTFM, params)
     
     if response.status_code == 200:
         #print("sucessfully fetched the data")
