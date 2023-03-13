@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'home',
+    'iTwitter'
 ]
 
 MIDDLEWARE = [
@@ -137,3 +139,6 @@ API_KEY_TWITTER=config('API_KEY_TWITTER')
 API_SECRET_TWITTER=config('API_SECRET_TWITTER')
 CLIENT_ID_TWITTER=config('CLIENT_ID_TWITTER')
 CLIENT_SECRET_TWITTER=config('CLIENT_SECRET_TWITTER')
+TWITTER_OAUTH_CALLBACK_URL=config('TWITTER_OAUTH_CALLBACK_URL')
+
+LOGIN_URL = '/iTwitter/twitter_login/'
